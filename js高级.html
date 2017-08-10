@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>js高级</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<style type="text/css">
+.highlight  { background: #ffffff; }
+.highlight .c { color: #999988; font-style: italic } /* Comment */
+.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .k { font-weight: bold } /* Keyword */
+.highlight .o { font-weight: bold } /* Operator */
+.highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { color: #999988; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #aa0000 } /* Generic.Error */
+.highlight .gh { color: #999999 } /* Generic.Heading */
+.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #555555 } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #aaaaaa } /* Generic.Subheading */
+.highlight .gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .kc { font-weight: bold } /* Keyword.Constant */
+.highlight .kd { font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #009999 } /* Literal.Number */
+.highlight .s { color: #d14 } /* Literal.String */
+.highlight .na { color: #008080 } /* Name.Attribute */
+.highlight .nb { color: #0086B3 } /* Name.Builtin */
+.highlight .nc { color: #445588; font-weight: bold } /* Name.Class */
+.highlight .no { color: #008080 } /* Name.Constant */
+.highlight .ni { color: #800080 } /* Name.Entity */
+.highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
+.highlight .nn { color: #555555 } /* Name.Namespace */
+.highlight .nt { color: #000080 } /* Name.Tag */
+.highlight .nv { color: #008080 } /* Name.Variable */
+.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #009999 } /* Literal.Number.Float */
+.highlight .mh { color: #009999 } /* Literal.Number.Hex */
+.highlight .mi { color: #009999 } /* Literal.Number.Integer */
+.highlight .mo { color: #009999 } /* Literal.Number.Oct */
+.highlight .sb { color: #d14 } /* Literal.String.Backtick */
+.highlight .sc { color: #d14 } /* Literal.String.Char */
+.highlight .sd { color: #d14 } /* Literal.String.Doc */
+.highlight .s2 { color: #d14 } /* Literal.String.Double */
+.highlight .se { color: #d14 } /* Literal.String.Escape */
+.highlight .sh { color: #d14 } /* Literal.String.Heredoc */
+.highlight .si { color: #d14 } /* Literal.String.Interpol */
+.highlight .sx { color: #d14 } /* Literal.String.Other */
+.highlight .sr { color: #009926 } /* Literal.String.Regex */
+.highlight .s1 { color: #d14 } /* Literal.String.Single */
+.highlight .ss { color: #990073 } /* Literal.String.Symbol */
+.highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #008080 } /* Name.Variable.Class */
+.highlight .vg { color: #008080 } /* Name.Variable.Global */
+.highlight .vi { color: #008080 } /* Name.Variable.Instance */
+.highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+.pl-c {
+    color: #969896;
+}
+
+.pl-c1,.pl-mdh,.pl-mm,.pl-mp,.pl-mr,.pl-s1 .pl-v,.pl-s3,.pl-sc,.pl-sv {
+    color: #0086b3;
+}
+
+.pl-e,.pl-en {
+    color: #795da3;
+}
+
+.pl-s1 .pl-s2,.pl-smi,.pl-smp,.pl-stj,.pl-vo,.pl-vpf {
+    color: #333;
+}
+
+.pl-ent {
+    color: #63a35c;
+}
+
+.pl-k,.pl-s,.pl-st {
+    color: #a71d5d;
+}
+
+.pl-pds,.pl-s1,.pl-s1 .pl-pse .pl-s2,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sra,.pl-sr .pl-sre,.pl-src,.pl-v {
+    color: #df5000;
+}
+
+.pl-id {
+    color: #b52a1d;
+}
+
+.pl-ii {
+    background-color: #b52a1d;
+    color: #f8f8f8;
+}
+
+.pl-sr .pl-cce {
+    color: #63a35c;
+    font-weight: bold;
+}
+
+.pl-ml {
+    color: #693a17;
+}
+
+.pl-mh,.pl-mh .pl-en,.pl-ms {
+    color: #1d3e81;
+    font-weight: bold;
+}
+
+.pl-mq {
+    color: #008080;
+}
+
+.pl-mi {
+    color: #333;
+    font-style: italic;
+}
+
+.pl-mb {
+    color: #333;
+    font-weight: bold;
+}
+
+.pl-md,.pl-mdhf {
+    background-color: #ffecec;
+    color: #bd2c00;
+}
+
+.pl-mdht,.pl-mi1 {
+    background-color: #eaffea;
+    color: #55a532;
+}
+
+.pl-mdr {
+    color: #795da3;
+    font-weight: bold;
+}
+
+.pl-mo {
+    color: #1d3e81;
+}
+.task-list {
+padding-left:10px;
+margin-bottom:0;
+}
+
+.task-list li {
+    margin-left: 20px;
+}
+
+.task-list-item {
+list-style-type:none;
+padding-left:10px;
+}
+
+.task-list-item label {
+font-weight:400;
+}
+
+.task-list-item.enabled label {
+cursor:pointer;
+}
+
+.task-list-item+.task-list-item {
+margin-top:3px;
+}
+
+.task-list-item-checkbox {
+display:inline-block;
+margin-left:-20px;
+margin-right:3px;
+vertical-align:1px;
+}
+</style>
+</head>
+<body>
+<h3 id="1-">1.作用域是：</h3>
+<pre><code>狭义上来说作用域是一个对象（更确切的来说是集合）；
+广义上来说是一套用来存储变量，并且之后可以方便找到这些变量的规则
+js中最普遍的作用域就是函数作用域
+</code></pre><h3 id="2-">2.右查询：</h3>
+<pre><code>对等号非左边变量的查询，在整条作用域链中，如果没有找到变量的声明，直接抛ReferenceError错误；
+</code></pre><h3 id="-">左查询：</h3>
+<pre><code>对等号左边变量的查询，在整条作用域链中，如果没有找到变量的声明，js引擎会自动在全局声明一个同名变量；
+</code></pre><p>▲变量的查询走的是整条作用域链，一个对象属性的查询是原型链</p>
+<h3 id="3-length-">3.伪数组：具有length属性的对象都可以叫做伪数组，可以遍历</h3>
+<h3 id="4-use-strict-">4.严格模式：“use strict”，左右查询都会报错</h3>
+<h3 id="5-eval-">5.上下文环境：相当于作用域的子集，作用域是静态的，上下文环境是动态的，代码（全局代码，函数体，eval代码）执行前的准备工作：</h3>
+<pre><code>    a.提升（变量 函数 函数表达式）
+    b.确定this的指向
+    c.与对应的作用域关联
+    如果代码段是函数体，那么在此基础上需要附加：参数 赋值，arguments 赋值
+</code></pre><h3 id="6-">6.提升：函数与变量，函数优先，函数是整体的提升，变量式声明的提升</h3>
+<h3 id="7-">7. 数据类型的分类：</h3>
+<pre><code>基本数据类型——string，number，Boolean，null，undefined
+引用数据类型——a.自定义对象 （不管什么定义形式）
+            b.自定义函数
+            c.内置对象：基本数据类型的包装类（要与数据类型相对应才会产生），Object，Function，Array，Date，RegExp，Error
+</code></pre><p>▲值传递与引用传递：在JavaScript中都是值传递，基本数据类型存在栈空间里传递的是值（通过值复制的方式来完成赋值/传递），引用数据类型传递的是堆里面的地址值（通过引用复制来完成赋值/传递）；<br>▲包装类的基本数据类型是不可以修改的</p>
+<h3 id="8-js-this-">8.js中this关键字的解析：</h3>
+<pre><code>    主要根据：函数调用位置上的调用形式
+            a.独立调用：this的默认绑定规则，this给window；严格模式下，this给undefined；
+            b.隐式调用（对象.的形式）：this的隐式绑定规则，this给离函数最近的对象；
+                 ▲隐式丢失：将函数通过隐式调用的形式赋值给一个变量
+                           将函数通过隐式调用的形式进行传参
+            c.call apply调用：this的显示绑定规则，this给call apply bind指定对象
+                  ▲硬绑定：包裹函数 有一个目标函数的显示调用（bind 返回值是一个函                                                            数）,可以通过硬绑定解决隐式丢失
+            d.new 调用：new绑定（this给构造出来的对象）
+▲绑定的例外：ES6中的箭头函数，被忽略的this（如果把null或undefined作为this的绑定对象传入call，apply或者bind，这些值在调用时会被忽略，实际应用的是默认绑定规则），柯里化（给函数预绑定参数）。
+★解决隐式丢失：硬绑定，bind函数的作用是返回一个新的函数，并且指定该新函数的this指向
+▲正常数组 ：优先
+    var  a =Array.apply(null,{length:3});//伪数组，相当于传了3个参数，值为undefined
+▲稀疏数组
+    var  b=new  Array(3);//相当于var  b=[ ];   b[3]=?  ，没有默认值的数组
+</code></pre><h3 id="9-">9.==操作符</h3>
+<pre><code>解析1：
+    将数据类型分成两组：
+        a.String，Number，Boolean和Object（有）
+        b.Undefined和Null（无）
+        c.1与2之间的比较都为false
+        d.Undefined和Null之间的比较为true
+        e.NaN 不等于 NaN
+解析2：
+    将其他数据类型转换为Number：
+         parseInt（value）
+         parseFloat（value）
+           转换情况：字符串—&gt;只要最高位是数字则会转换成数值；否则转换为NaN；其它—&gt;NaN
+        Number（）
+            转换情况：把字符串两边的空白字符串去掉，然后把两边的引号去掉，看能否组成一个合法的数字。如果是，转化结果是这个数字；否则，结果是NaN。例外是空白字符串转换为数字的结果是0。
+解析3：
+    一些内置对象（Object，Array，Date，Number等）在转换时需要toString（）和valueOf（）方法。
+解析4：
+    undefined == null ；//true    它俩与所有其他值比较的结果都是false
+    [&quot; &quot;] == false;//true
+</code></pre><h3 id="10-writable-true-value-configurable-true-enumerable-true-">10.属性描述符（是描述属性的属性，也叫元属性；writable：true  可读写 与value共存；configurable：true  可枚举；enumerable：true  可配置）</h3>
+<pre><code>   ▲对象的创建方式
+            属性描述符都是true：var n={age：“十岁” }；
+            属性描述符都是false：var n={ }；Object.defineProperty（n，“age”，{ value：“十岁”}）
+            获取对象的属性的属性描述符：Object.getOwnPropertyDescriptor(n,&quot;age&quot;)
+   ▲var a = 2；var a = 3；此模式第二次的var 没有任何意义
+   ▲属性描述符的解析：
+                value：&quot;b&quot;
+                    writable:true ----&gt;一个属性的读写权限；
+                    configurable:false ---&gt;一个属性的可配置权限（重新定义，删除）；
+                        重新定义：writable可以从true变为false，configurable和enumerable不可改变；
+                    enumerable ：true----&gt;能不能出现在for  in 循环中
+▲enumerable的枚举：
+        判断属性是否可枚举：obj.propertysEnumerable(&quot;属性名&quot;)
+        获取可枚举的属性列表：Object.keys(obj)
+        获取所有的属性列表：Object.getOwnPropertyNames（obj）
+</code></pre><h3 id="11-">11.对象的不变性：</h3>
+<pre><code>    a.对象常量属性：将属性的writable和configurable设置为false
+    b.禁止对象扩展：调用Object.preventExtensions（obj）
+    c.密封对象：调用Object.seal（obj），在禁止对象扩展的基础上将configurable设为false。
+    d.冻结对象：调用Object.freeze（obj），也可以在密封对象的基础上将writable设为false。
+  ▲值得注意的是：在js中，所有方法的创建都是浅不变形的，只会影响目标对象和它的直接属性
+</code></pre><h3 id="12-in-console-log-in-obj-">12.存在性检查：使用关键字 in；console.log(&quot;属性名&quot;  in  obj)</h3>
+<h3 id="13-">13.</h3>
+<pre><code> 访问描述符：带有set和get属性描述符的属性；
+ 数据描述符：带有value和writable属性描述符的属性
+ 属性描述符：描述属性的属性（元属性）
+</code></pre><h3 id="14-">14.原型链：</h3>
+<pre><code>    a.对象有隐式原型_proto_,函数有显示原型prototype，也有隐式原型_proto_ ；
+    b.函数的prototype一般情况下都是一个{ }：自定义函数都是{ }，内置函数都是自己对应的实例对象（例 String.prototype是String实例对象）。两者的共同点是他们的_proto_ 共同指向Object.prototype,所以从一定意义上说函数的prototype一般情况下是{ }；
+    c.一个实例对象的_proto_  指向它对应的构造函数的prototype
+    d.原型链的头是：Object.prototype._proto_为null；
+    e.原型链：只有隐式原型链，和显示原型
+</code></pre><h3 id="15-js-array-prototype-slice-call-">15.在JS中没有真正的数组，都是伪数组，将伪数组转换为真数组可用的方法是：Array.prototype.slice.call(伪数组)</h3>
+<h3 id="16-">16.属性的设置与获取：</h3>
+<pre><code>基本的设置与获取：
+ 属性的设置与获取:(该属性是一个数据描述符,而且writable为true)
+        获取:先找对象的直接属性再找原型链
+                如果能找到就使用该找到的属性
+                如果找不到就返回undefined
+        设置:不管对象的直接属性和原型链,操作的永远是对象的直接属性
+                如果直接属性中没有该属性,则新增一个
+                如果直接属性中有该属性,则修改
+  在有访问描述符后的获取与设置：略
+</code></pre><h3 id="17-">17.闭包的最经典解释：一个函数，能够记住，并且访问自己所处的作用域</h3>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
