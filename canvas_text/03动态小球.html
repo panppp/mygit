@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小球</title>
+    <style>
+        #canvas{
+            border: 1px solid lightcoral;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="800px" height="500px"></canvas>
+</body>
+<script>
+    var canvas=document.getElementById('canvas');
+    var context=canvas.getContext('2d');
+    var width=canvas.width;
+    var height=canvas.height;
+
+    function Ball(h){
+        this.r=20;//小球的半径
+        this.x=Math.random()*(width-40)+20;//随机X轴的位置
+        this.y=h+this.r;//Y轴位置
+        this.globalAlpha=1;//透明度默认值
+        //矩形的边框颜色随机
+        this.red=Math.floor(Math.random()*255);//rgb颜色随机，数值取整
+        this.g=Math.floor(Math.random()*255);
+        this.b=Math.floor(Math.random()*255);
+        this.paint=function(){
+            context.globalAlpha = this.globalAlpha;
+            context.fillStyle='rgb('+this.red+','+this.g+','+this.b+')';
+            context.beginPath();
+            context.arc(this.x,this.y,this.r,0,Math.PI*2);
+            context.fill();
+        };
+        this.animate=function(){
+            this.y--;
+            this.globalAlpha = this.globalAlpha - 0.0015;
+        }
+    }
+
+    var balls = [];
+    setInterval(function(){
+        var ball = new Ball(height);
+        balls.push(ball);
+
+    },50);
+    setInterval(function(){
+        context.clearRect(0,0,width,height);
+
+        for(var i = 0;i< balls.length;i++){
+            var ball=balls[i];
+                //删除透明度小于0的
+                if(ball.globalAlpha <= 0){
+                    balls.splice(i,1);
+                }
+            ball.paint();
+            ball.animate();
+        }
+
+        },10);
+
+//    var y=height+10;
+//    //
+//    //矩形的边框颜色随机
+//    var r=Math.floor(Math.random()*255);
+//    var g=Math.floor(Math.random()*255);
+//    var b=Math.floor(Math.random()*255);
+//    context.fillStyle='rgb('+r+','+g+','+b+')';
+//    var gl=1
+//    setInterval(function(){
+//        context.clearRect(0,0,width,height);
+//
+//        context.globalAlpha=gl;
+//        context.beginPath();
+//        context.arc(300,y,20,0,Math.PI*2);
+//        context.fill();
+//        y--;
+//        gl -= 0.003;
+//    },20)
+
+
+
+
+</script>
+</html>

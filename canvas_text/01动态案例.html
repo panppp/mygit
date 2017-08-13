@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #canvas{
+            background: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500px" height="300px"></canvas>
+</body>
+<script>
+    var canvas=document.getElementById('canvas');
+    var context=canvas.getContext('2d');
+    //用构造对象的方式实现点击出现多个图形
+    function Point(){
+        this.width=1;
+        this.height=1;
+
+        this.offsetX=0;
+        this.offsetY=0;
+//        this.x=this.offsetX-this.width/2;
+//        this.y=this.offsetY-this.height/2;
+        this.pointRect=function(){
+            context.strokeRect(this.offsetX-this.width/2,this.offsetY-this.height/2,this.width,this.height);
+        };
+        this.animate=function(){
+            this.width++;
+            this.height++
+        }
+    }
+
+    var rects=[];
+    var flag=false;
+    canvas.onclick=function(event){
+           flag=true;
+           var point=new Point();
+           point.offsetX=event.offsetX;
+           point.offsetY=event.offsetY;
+//           point.x=event.offsetX-point.width/2;
+//           point.y=event.offsetY-point.height/2;
+           point.pointRect();
+           rects.push(point);
+    }
+    setInterval(function(){
+
+            if(flag) {
+                context.clearRect(0,0,500,300);
+//               point.animate();
+//               point.pointRect();
+                for(var i=0;i<rects.length;i++){
+                    var rect=rects[i];
+                    rect.animate();
+                    rect.pointRect();
+                }
+
+            }
+    },10)
+    //解决一个图形的动画
+//    var width=1,height=1;
+//    var offsetX,offsetY;
+//    var flag=false;
+//   canvas.onclick=function(event){
+//       flag=true;
+//       offsetX=event.offsetX;
+//       offsetY=event.offsetY;
+//       context.strokeRect(offsetX-width/2,offsetY-height/2,width,height);
+//   }
+//    setInterval(function(){
+//
+//        if(flag) {
+//            context.clearRect(0,0,500,300);
+//            width++;
+//            height++;
+//            context.strokeRect(offsetX - width / 2, offsetY - height / 2, width, height);
+//        }
+//    },10)
+</script>
+</html>

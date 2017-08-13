@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>样式案例</title>
+    <style>
+        canvas {
+            /*background-color: lightskyblue;*/
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body onload="init()" onresize="init()">
+<canvas id="canvas" width="1200px" height="550px"></canvas>
+<script>
+    /*
+        TODO 绘制多个空心矩形
+        TODO * 矩形的坐标随机 - x,y
+        TODO   * 0 < x < canvas.width
+        TODO   * 0 < y < canvas.height
+        TODO * 矩形的宽度和高度随机 - width,height
+        TODO   * width必须小于canvas的宽度，height必须小于canvas的高度
+        TODO * 矩形的边框颜色随机
+     */
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var width=canvas.width;
+    var height=canvas.height;
+
+//    context.fillStyle = 'lightcoral';
+//    context.fillRect(10,10,200,200);
+//    context.clearRect(20,20,180,180);
+//
+//    context.fillStyle = 'lightgreen';
+//    context.fillRect(220,10,300,300);
+//    context.clearRect(228,18,284,284);
+//
+//    context.fillStyle = 'red';
+//    context.globalAlpha=0.5;
+//    context.fillRect(550,200,300,300);
+//    context.clearRect(560,210,280,280);
+//    function init(){
+//        var html=document.documentElement;
+//        canvas.width=html.clientWidth;
+//        canvas.height=html.clientHeight;
+//    }
+    setInterval(function(){
+        //矩形的坐标随机 - x,y
+        var x=Math.random()*width;
+        var y=Math.random()*height;
+        //矩形的宽度和高度随机 - width,height,但不能为0
+        var widthX=Math.random()*(width-1)+1;
+        var heightX=Math.random()*(height-1)+1;
+        //矩形的边框颜色随机
+        var r=Math.floor(Math.random()*255);
+        var g=Math.floor(Math.random()*255);
+        var b=Math.floor(Math.random()*255);
+        context.strokeStyle='rgb('+r+','+g+','+b+')'
+        context.strokeRect(x,y,widthX,heightX)
+    },500)
+</script>
+</body>
+</html>
