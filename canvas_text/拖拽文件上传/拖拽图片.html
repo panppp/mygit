@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> </title>
+  <meta charset="utf-8"/>
+  <style>
+    body {
+      text-align: center;
+    }
+    #target {
+      border: 2px solid #bbb;
+      width: 200px;
+      height: 150px;
+      text-align: center;
+      line-height: 150px;
+      margin: 20px auto;
+    }
+    .gray {
+      display: none;
+    }
+  </style>
+ </head>
+
+ <body>
+  <h1>作业：使用拖放API</h1>
+  
+  <div id="target">
+    请选择您的英雄
+  </div>
+  
+  <img id="p1" src="img/p1.png" class="src">
+  <img id="p1_gray" src="img/p1_gray.png" class="gray">
+  <img id="p2" src="img/p2.png" class="src">
+  <img id="p2_gray" src="img/p2_gray.png" class="gray">
+  <img id="p3" src="img/p3.png" class="src">
+  <img id="p3_gray" src="img/p3_gray.png" class="gray">
+
+  <script>
+  var srcObj = null; //被拖拽的源对象
+
+  var list = document.querySelectorAll('.src');
+  for(var i in list){
+    var img = list[i];
+    //源对象可以触发的事件
+    img.ondragstart = function(){
+      console.log('src: drag start...');
+      srcObj = this;//记录拖拽的源对象
+    }
+    img.ondrag = function(){
+      console.log('src: drag...');
+    }
+    img.ondragend = function(){
+      console.log('src: drag end...');
+    }
+  }
+
+  //目标对象可以触发的事件
+  target.ondragenter = function(){
+    console.log('target: drag enter...');
+  }
+  target.ondragover = function(e){
+    e.preventDefault(); //使得drop可以触发
+    console.log('target: drag over...');
+  }
+  target.ondragleave = function(){
+    console.log('target: drag leave...');
+  }
+  target.ondrop = function(){
+    console.log('target: drop...');
+    this.innerHTML = '';
+    var copy = srcObj.cloneNode(); //克隆一个元素
+    this.appendChild( copy );
+
+    srcObj.style.display = 'none';
+    srcObj.nextElementSibling.style.display = 'inline-block';
+  }
+  </script>
+ </body>
+</html>
